@@ -93,7 +93,8 @@ export default function LoginPage() {
               disabled={loading}
               className="w-full bg-green-500 hover:bg-green-600 text-black font-semibold py-5 rounded-xl transition-all"
             >
-              {loading ? "Logging in..." : "Login"}
+              {/* {loading ? "Logging in..." : "Login"} */}
+              Login
             </Button>
 
             <p className="text-sm text-center text-zinc-300">

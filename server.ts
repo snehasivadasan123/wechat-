@@ -1,3 +1,8 @@
+import dotenv from "dotenv";
+
+dotenv.config();
+
+console.log("ENV TEST:", process.env.DATABASE_URL);
 import { createServer } from "http";
 import { parse } from "url";
 import next from "next";
@@ -6,10 +11,9 @@ import { prisma } from "./lib/prisma";
 const dev = process.env.NODE_ENV !== "production";
 const hostname = "localhost";
 const port = parseInt(process.env.PORT || "3000", 10);
-
+console.log("port===>>>", port)
 const app = next({ dev, hostname, port });
 const handle = app.getRequestHandler();
-
 app.prepare().then(() => {
   const httpServer = createServer(async (req, res) => {
     try {

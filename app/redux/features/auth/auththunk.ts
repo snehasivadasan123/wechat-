@@ -83,6 +83,7 @@ export const loginUser = createAsyncThunk<User, User, { rejectValue: string }>(
   async (user, { rejectWithValue }) => {
     try {
       const loggedInUser = await apiLogin(user)
+      console.log("the logged?????",loggedInUser)
       return loggedInUser
     } catch (err: any) {
       return rejectWithValue(err.message)
