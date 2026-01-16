@@ -5,13 +5,15 @@ import { PrismaClient } from "./generated/prisma/client"
 const { Pool } = pg
 
 const dbConfig = {
-  host: process.env.DB_HOST || 'localhost',
-  port: parseInt(process.env.DB_PORT || '5433'),
-  user: process.env.DB_USER || 'postgres',
-  password: process.env.DB_PASSWORD || 'postgres1234',
+  host: process.env.DB_HOST || 'ep-cool-king-ahloqdjv-pooler.c-3.us-east-1.aws.neon.tech',
+  port: parseInt(process.env.DB_PORT || '5432'),
+  user: process.env.DB_USER || 'neondb_owner',
+  password: process.env.DB_PASSWORD || 'npg_tbEZGoX5zig9',
   database: process.env.DB_NAME || 'wechat',
-  ssl: process.env.DB_SSL === 'true' ? { rejectUnauthorized: false } : false,
-}
+  ssl: { rejectUnauthorized: false }, // since Neon requires SSL
+};
+
+
 
 
 console.log("Database config:", {
