@@ -13,7 +13,7 @@ import {
   Message,
 } from "@/app/redux/features/chat/chatsice";
 import { socket } from "@/app/lib/socket";
-import { sendMessageToApi } from "@/app/redux/features/chat/chatthunk";
+// import { sendMessageToApi } from "@/app/redux/features/chat/chatthunk";
 
 export default function ChatArea() {
   const dispatch = useDispatch<AppDispatch>();
@@ -375,7 +375,7 @@ export default function ChatArea() {
           // onChange={(e) => setMessage(e.target.value)}
           onChange={handleTyping}
           onKeyPress={handleKeyPress}
-          disabled={!selectedUser || !isConnected}
+          disabled={!selectedUser}
         />
         <Button
           disabled={!selectedUser || !message.trim() || !isConnected}
