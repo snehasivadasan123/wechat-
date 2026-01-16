@@ -10,8 +10,9 @@ const dbConfig = {
   user: process.env.DB_USER || 'postgres',
   password: process.env.DB_PASSWORD || 'postgres1234',
   database: process.env.DB_NAME || 'wechat',
-  ssl: false,
+  ssl: process.env.DB_SSL === 'true' ? { rejectUnauthorized: false } : false,
 }
+
 
 console.log("Database config:", {
   ...dbConfig,

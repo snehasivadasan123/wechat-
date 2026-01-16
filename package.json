@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "tsx -r tsconfig-paths/register server.ts",
     "build": "next build",
+      "postinstall": "prisma generate",
     "start": "NODE_ENV=production tsx -r tsconfig-paths/register server.ts",
     "lint": "eslint"
   },
