@@ -378,7 +378,7 @@ export default function ChatArea() {
           disabled={!selectedUser}
         />
         <Button
-          disabled={!selectedUser || !message.trim() || !isConnected}
+          disabled={!selectedUser || !message.trim()}
           onClick={handleSendMessage}
           className="cursor-pointer bg-green-600 hover:bg-green-700 active:bg-green-800 transition-colors rounded p-2"
         >
