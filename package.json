@@ -8,6 +8,7 @@
     "build": "next build",
       "postinstall": "prisma generate",
     "start": "NODE_ENV=production tsx -r tsconfig-paths/register server.ts",
+    "start:socket": "NODE_ENV=production tsx -r tsconfig-paths/register socket-server.ts",
     "lint": "eslint"
   },
   "dependencies": {
