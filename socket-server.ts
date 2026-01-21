@@ -62,8 +62,7 @@ io.on("connection", (socket) => {
             };
 
             io.to(message.receiver).emit("receive-message", messageToEmit);
-            io.to(message.sender).emit("receive-message", messageToEmit);
-            console.log("Emitted to both sender and receiver");
+            console.log("Emitted to receiver");
         } catch (err) {
             console.error("Message error:", err);
         }
