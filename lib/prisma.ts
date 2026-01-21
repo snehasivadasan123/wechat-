@@ -4,29 +4,28 @@ import { PrismaClient } from "./generated/prisma/client"
 
 const { Pool } = pg
 
-const dbConfig = {
-  host: process.env.DB_HOST || 'ep-cool-king-ahloqdjv-pooler.c-3.us-east-1.aws.neon.tech',
-  port: parseInt(process.env.DB_PORT || '5432'),
-  user: process.env.DB_USER || 'neondb_owner',
-  password: process.env.DB_PASSWORD || 'npg_tbEZGoX5zig9',
-  database: process.env.DB_NAME || 'wechat',
-  ssl: { rejectUnauthorized: false }, // since Neon requires SSL
-};
+const connectionString = process.env.DATABASE_URL;
+
+const pool = connectionString
+  ? new Pool({ connectionString })
+  : new Pool({
+    host: process.env.DB_HOST || 'ep-cool-king-ahloqdjv-pooler.c-3.us-east-1.aws.neon.tech',
+    port: parseInt(process.env.DB_PORT || '5432'),
+    user: process.env.DB_USER || 'neondb_owner',
+    password: process.env.DB_PASSWORD || 'npg_tbEZGoX5zig9',
+    database: process.env.DB_NAME || 'wechat',
+    ssl: { rejectUnauthorized: false }, // since Neon requires SSL
+  });
 
 
 
 
 console.log("Database config:", {
-  ...dbConfig,
-  password: dbConfig.password ? '***' : 'NOT SET'
+  connectionString: connectionString ? '***' : 'NOT SET',
+  host: process.env.DB_HOST,
 })
 
-const pool = new Pool(dbConfig)
-
-
-
 pool.on('error', (err) => {
-
   console.error('Unexpected error on idle client', err)
 })
 
